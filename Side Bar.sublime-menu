@@ -1,0 +1,9 @@
+[{ "caption": "-", "id": "godev" },
+{
+    "caption": "New Go File",
+    "id": "new_go_file",
+    "command": "godev_new_file",
+    "args": {
+        "dirs": []
+    }
+}]

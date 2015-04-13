@@ -1,0 +1,8 @@
+{
+	// GOPATH
+    "GOPATH": "",
+    // go template attributes
+    "date_format": "%Y-%m-%d %H:%M:%S",
+    // i.e. peter or peter (peter@gmail.com)
+    "author": "Your Name"
+}

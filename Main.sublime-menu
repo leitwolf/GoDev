@@ -1,0 +1,64 @@
+[
+    {
+        "caption": "GoDev",
+        "mnemonic": "n",
+        "id": "godev",
+        "children": [
+        {
+            "command": "godev_settings",
+            "caption": "Settings"
+        },
+        {
+            "id": "build",
+            "caption": "Build",
+            "children": [
+                {
+                    "command": "godev_run",
+                    "caption": "Run"
+                },
+                {
+                    "command": "godev_stop",
+                    "caption": "Stop"
+                },
+                {
+                    "caption": "-"
+                },
+                {
+                    "caption": "Win/386",
+                    "args": {"goos": "windows", "goarch": "386"},
+                    "command": "godev_build"
+                }, {
+                    "caption": "Win/amd64",
+                    "args": {"goos": "windows", "goarch": "amd64"},
+                    "command": "godev_build"
+                }, {
+                    "caption": "Linux/386",
+                    "args": {"goos": "linux", "goarch": "386"},
+                    "command": "godev_build"
+                }, {
+                    "caption": "Linux/amd64",
+                    "args": {"goos": "linux", "goarch": "amd64"},
+                    "command": "godev_build"
+                }, {
+                    "caption": "Mac OS X",
+                    "args": {"goos": "darwin", "goarch": "amd64"},
+                    "command": "godev_build"
+                }
+            ]
+        },
+        {
+            "id": "orm",
+            "caption": "Orm",
+            "children": [
+                {
+                    "caption": "Beego",
+                    "command": "godev_orm_beego"
+                }
+            ]
+        },
+        {
+            "command": "godev_closepanes",
+            "caption": "Close Panes"
+        }]
+    }
+]
