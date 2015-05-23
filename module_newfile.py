@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 
+#
 # Author: lonewolf
 # Date: 2015-04-08 18:40:59
-# 
+#
 
 import os.path
 import functools
@@ -13,7 +13,7 @@ import sublime_plugin
 from . import lib_helper
 
 # 新建文件模板
-FILE_TEMPLATE="""//
+FILE_TEMPLATE = """//
 // Author: ${author}
 // Date: ${date}
 //
@@ -21,8 +21,15 @@ package ${package}
 """
 
 # 新建文件
+
+
 class GodevNewFileCommand(sublime_plugin.WindowCommand):
+
     def run(self, dirs):
+        if len(dirs) != 0:
+            sublime.status_message("Select one folder.")
+            return
+
         self.window.run_command("hide_panel")
         title = "untitle"
         on_done = functools.partial(self.on_done, dirs[0])
@@ -42,17 +49,14 @@ class GodevNewFileCommand(sublime_plugin.WindowCommand):
             format = settings.get("date_format", "%Y-%m-%d %H:%M:%S")
             date = datetime.datetime.now().strftime(format)
             code = code.replace("${date}", date)
-            author=settings.get("author", "Your Name")
+            author = settings.get("author", "Your Name")
             code = code.replace("${author}", author)
             # package
-            package=os.path.split(path)[-1]
+            package = os.path.split(path)[-1]
             code = code.replace("${package}", package)
             # save
             lib_helper.write_file(filepath, code)
-            v=sublime.active_window().open_file(filepath)
+            v = sublime.active_window().open_file(filepath)
             # cursor
-            v.run_command("insert_snippet",{"contents":code})
+            v.run_command("insert_snippet", {"contents": code})
             sublime.status_message("Go file create success!")
-
-    def is_enabled(self, dirs):
-        return len(dirs) == 1
